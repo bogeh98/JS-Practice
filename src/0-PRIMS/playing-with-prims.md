@@ -16,29 +16,41 @@ In your group, create a suite of the following primitives about a topic of your 
 - 1 array for the Numbers
 - 1 array of 5 objects that combines the Strings and Numbers into 1
 
-```javascript
-/**
- * Convert and declare here!
-**/
+```js
 // 5 Strings with `let`
-
+let fruit = "tangerine"
+let salad = "caesar"
+let coffee = "latte"
+let mineral = "graphite"
+let animal = "giraffe"
 
 // 5 Numbers with `const`
-
+const tangerine = 1
+const caesar = 2
+const latte = 3
+const graphite = 4
+const giraffe = 5
 
 // 1 array for the Strings with the variable names
-
+let nounItemsGen = [fruit, salad, coffee, mineral, animal]
 
 // 1 array for the Numbers with the variable names
-
+let nounItemsSpec = [tangerine, caesar, latte, graphite, giraffe]
 
 /**
  * 1 array of 5 objects that combines the Strings
  * and Numbers into 1 object as 2 properties of
  * each object
 **/
+let nounItemsCollection [
+  {nounItemsSpec: tangerine, nounItemsGen: fruit},
+  {nounItemsSpec: caesar, nounItemsGen: salad},
+  {nounItemsSpec: latte, nounItemsGen: coffee},
+  {nounItemsSpec: graphite, nounItemsGen: mineral},
+  {nounItemsSpec: giraffe, nounItemsGen: animal}
+] 
 
-
+console.log (nounItemsCollection)
 ```
 
 ## 2. Playing with Our Data in the Web Console
