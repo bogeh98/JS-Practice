@@ -69,7 +69,7 @@ console.log(dearGovernerLetters)
 
 Use .length to get the length of the array.
 
-```javascript
+```js
 dearGovernerLetters.length // 3
 ```
 
@@ -77,15 +77,15 @@ dearGovernerLetters.length // 3
 
 Use .length to get the length of the array.
 
-```javascript
+```js
 dearGovernerLetters[0] // First object in array
 ```
 
-```javascript
+```js
 dearGovernerLetters[1] // Second object in array
 ```
 
-```javascript
+```js
 dearGovernerLetters[2] // Third object in array
 ```
 
@@ -97,10 +97,10 @@ Arrays are iterables, i.e., you can traverse them programmatically with special 
 
 You can access the item index with for...in loops.
 
-```javascript
-for (let ___ in dearGovernerLetters) {
+```js
+for (let letterNum in dearGovernerLetters) {
   // log each item
-  console.log()
+  console.log(letterNum, "-->", dearGovernerLetters[letterNum])
 }
 ```
 
@@ -108,10 +108,10 @@ for (let ___ in dearGovernerLetters) {
 
 You can access the item value with for...of loops.
 
-```javascript
-for (let ___ of dearGovernerLetters) {
+```js
+for (let letters of dearGovernerLetters) {
   // log each item
-  console.log()
+  console.log(letters)
 }
 ```
 
@@ -123,11 +123,11 @@ We can do more interesting evaluations by combining for loops and conditional if
 
 Since `for...in` loops can access the item index, you should use this structure when the position helps you create a condition with this value.
 
-```javascript
-for (let ___ in dearGovernerLetters) {
-  if () {
+```js
+for (let letterNum in dearGovernerLetters) {
+  if (dearGovernerLetters[letterNum].stance == "Anti") {
     // Do something in here
-    console.log()
+    console.log(dearGovernerLetters[letterNum].stance)
   }
 }
 ```
@@ -136,11 +136,11 @@ for (let ___ in dearGovernerLetters) {
 
 You can access the item value with for...of loops.
 
-```javascript
-for (let ___ of dearGovernerLetters) {
-  if () {
+```js
+for (let letter of dearGovernerLetters) {
+  if (letter.stance != "Anti") {
     // Do something in here
-    console.log()
+    console.log(letter)
   }
 }
 ```
