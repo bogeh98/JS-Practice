@@ -2,6 +2,25 @@
 
 Let's practice writing functions that do things with objects.
 
+```js
+let tompkinsRooms = [
+{
+  chairs: 20,
+  tables: 10,
+  roomName: "Tompkins 126"
+},
+{
+  chairs: 40,
+  tables: 3,
+  roomName: "Tompkins 134"
+}
+]
+```
+
+```js
+room
+```
+
 ## Attach dataset
 
 Attach the following CSV file with D3's `FileAttachment()` to a constant `ncVotersAll`: `/src/data/nc-voters/nc_absentee_mail_2024_random_n20000.csv`.
@@ -10,16 +29,17 @@ Attach the following CSV file with D3's `FileAttachment()` to a constant `ncVote
   Don't forget to add a <code>.csv()</code> function to the end of <code>FileAttachment()</code>, which will include the following object: <code>{typed: true}</code>.
 </p>
 
-```javascript
+```js
 // Convert and attach!
+const ncVotersAll = FileAttachment("./../data/nc-voters/nc_absentee_mail_2024_random_n20000.csv").csv({typed: true})
 ```
 
 ## Render "ncVotersAll" to the page
 
 Let's render the newly attached dataset to the page in a new codeblock.
 
-```javascript
-// Convert and render!
+```js
+ncVotersAll
 ```
 
 ## First: A Refresher on Dates!
@@ -36,9 +56,9 @@ let testDateString = "09/01/2024"
 
 Let's create a date parser with D3's `utcParse()` that requires a [date string specifier](https://d3js.org/d3-time-format#locale_format) scheme that matches our String representation of date data in the dataset: `00/00/0000`.
 
-```javascript
+```js
 // We need a specifier that matches `00/00/0000`
-const dateParser = d3.utcParse("")
+const dateParser = d3.utcParse("%m/%d/%Y")
 
 let testDateObj = dateParser(testDateString)
 
@@ -71,7 +91,8 @@ Ok, with this plan in place, we need to remember that function is a scoped block
 
 What input parameters should we pass to our function?
 
-1. ???
+1. 'ncVotersAll' - Array of objects for the NC election
+2. 'ballot_req_dt' - Key for date property of interest
 
 ### 3. Writing our function
 
@@ -82,6 +103,21 @@ Open up `utils.js` in a new column in VS Code, so we can write code in both file
 Let's start by naming our function. Naming functions follows a general scheme of being verb-oriented to highlight the actionable goal your function wilil achieve. In this case, we are mapping date objects and other date data, so let's keep it simple and call it `mapDateObjects`.
 
 <div class="tip">
+
+```js
+const mapDateObjects = (data, dateKey) => {
+  const updatedData = data.map(
+    (ballot) => {
+      // console.log(ballot)
+      ballot.ballot_req_dt_obj = dateParser(ballot.ballot_req_dt)
+      return ballot
+    }
+  )
+
+  return updatedData
+}
+```
+
   <p>
     Your function's name should:
   </p>
@@ -91,15 +127,16 @@ Let's start by naming our function. Naming functions follows a general scheme of
   </ol>
 </div>
 
-```javascript
+```js
 // Whatever I return from my function is what is assigned to our new variable
-let ncVotersAllUpdated = mapDateObjects(????)
+let ncVotersAllUpdated = mapDateObjects(ncVotersAll, "ballot_req_dt")
+console.log(ncVotersAllUpdated)
 ```
 
 ## Output our newly updated Array of objects
 
 Let's see what we get by rendering `ncVotersAllUpdated` to the page:
 
-```javascript
+```js
 ncVotersAllUpdated
 ```
